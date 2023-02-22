@@ -164,7 +164,7 @@ const obj2 = {
 };
 // come fare a mantenere coerenza tra oggetti simili? (stesse proprietà e stesso TIPO di valori)
 
-// esempio con Custom Type
+// esempio con Custom Type o Alias
 type EpicodeTeacher = {
   name: string;
   surname: string;
@@ -241,6 +241,7 @@ const studente3: EpicodeStudent = {
   batch: "FS0822ITA"
 };
 
+// inserire in un array gli oggetti generati in maniera coerente dall'interfaccia
 // const arrayOfStudents: Array<EpicodeStudent> = [];
 const arrayOfStudents: EpicodeStudent[] = [];
 
@@ -251,7 +252,8 @@ arrayOfStudents.push(studente3);
 console.log(arrayOfStudents);
 
 arrayOfStudents.forEach(s => {
-  console.log(s.batch.substring(0, 3));
+  console.log(s.batch.substring(0, 3)); // TS ci suggerisce i metodi consoni anche per le proprietà di un oggetto che ci arriva dal parametro del forEach!
+  // prova a scrivere s. e noterai che conosce perfettamente le proprietà disponibili su quell'oggetto, tutto grazie alla struttura dei tipi che abbiamo creato in precedenza
 });
 
 // GENERICS
